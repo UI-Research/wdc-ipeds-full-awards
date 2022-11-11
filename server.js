@@ -11,7 +11,7 @@ const fetch = require("node-fetch");
 const iconv = require("iconv-lite");
 const app = express();
 
-app.use(express.static("wdc"));
+app.use(express.static("./"));
 app.use(express.json());
 
 app.get("/", (req, res) => {
