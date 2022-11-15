@@ -31,3 +31,11 @@ h2 {
   margin-top: 2px;
   color: #8cba51;
   position: relative; }
+
+  .loadError {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }

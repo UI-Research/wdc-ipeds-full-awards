@@ -10,6 +10,10 @@ const express = require("express");
 const fetch = require("node-fetch");
 const iconv = require("iconv-lite");
 const app = express();
+const cors = require("cors");
+
+//Enable  CORS
+app.use(cors());
 
 app.use(express.static("./"));
 app.use(express.json());
