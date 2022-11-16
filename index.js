@@ -5,8 +5,8 @@ const serveStatic = require('serve-static');
 const express = require("express");
 const fetch = require("node-fetch");
 const iconv = require("iconv-lite");
-const app = express();
 const cors = require("cors");
+const app = express();
 //Enable  CORS
 app.use(cors());
 
@@ -33,10 +33,13 @@ const serve = serveStatic('./', {
 app.use(express.static('.'));
 app.use(express.json());
 
-app.get('/', (req, res) => {
+app.get('/', cors(), (req, res) => {
+  res.json({msg: 'This is CORS-enabled for all origins!'})
   res.sendFile(__dirname + "/index.html");
 });
-app.listen(serverPortNumber);
+app.listen(serverPortNumber, function () {
+  console.log(`CORS-enabled web server listening on port ${serverPortNumber}`);
+});
 
 app.post("/proxy/*", async (req, res) => {
   let url = req.url.split("/proxy/")[1];
