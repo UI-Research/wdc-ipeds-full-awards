@@ -1,17 +1,12 @@
 const express = require("express");
 const fetch = require("node-fetch");
 const iconv = require("iconv-lite");
-const cors = require("cors");
 const app = express();
 
-//Enable  CORS
-app.use(cors());
-
-app.use(express.static("."));
+app.use(express.static("public"));
 app.use(express.json());
 
-app.get("/", cors(), (req, res) => {
-  res.json({msg: 'This is CORS-enabled for all origins!'});
+app.get("/", (req, res) => {
   res.sendFile(__dirname + "/index.html");
 });
 
@@ -45,6 +40,5 @@ app.post("/proxy/*", async (req, res) => {
 });
 
 const listener = app.listen(process.env.PORT, () => {
-  console.log(`CORS-enabled web server listening on port ${serverPortNumber}`);
   console.log("Your app is listening on port " + listener.address().port);
 });
