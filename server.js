@@ -3,11 +3,11 @@ const fetch = require("node-fetch");
 const iconv = require("iconv-lite");
 const app = express();
 
-app.use(express.static(__dirname + './public/'));
+app.use(express.static('public'));
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/index.html");
+  res.sendFile(__dirname + "/views/index.html");
 });
 
 app.post("/proxy/*", async (req, res) => {
