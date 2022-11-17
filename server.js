@@ -3,7 +3,7 @@ const fetch = require("node-fetch");
 const iconv = require("iconv-lite");
 const app = express();
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + './public/'));
 app.use(express.json());
 
 app.get("/", (req, res) => {
