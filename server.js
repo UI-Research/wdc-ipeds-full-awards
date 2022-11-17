@@ -7,7 +7,7 @@ app.use(express.static('./'));
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/views/index.html");
+  res.sendFile(__dirname + "/index.html");
 });
 
 app.post("/proxy/*", async (req, res) => {
