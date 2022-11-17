@@ -58,7 +58,7 @@ myConnector.init = function(initCallback) {
 myConnector.getSchema = async function(schemaCallback) {
 
         // Get metadata
-        var variable_metadata = await fetch('https://educationdata.ssh.urban.org/api/v1/api-variables/?mode=tableauwdc')
+        var variable_metadata = await fetch('https://educationdata.urban.org/api/v1/api-variables/?mode=tableauwdc')
             .then(response => response.json());
         var variable_metadata_feat = variable_metadata.results;
         var var_description = {};
@@ -133,12 +133,12 @@ myConnector.getData = async function(table, doneCallback){
       let mode = conData.fastMode ? "fast" : conData.mode ? conData.mode : "typed";
       let row_index = 0;
       let size = 10000;
-      var variable_metadata = await fetch('https://educationdata.ssh.urban.org/api/v1/api-values/?mode=tableauwdc')
+      var variable_metadata = await fetch('https://educationdata.urban.org/api/v1/api-values/?mode=tableauwdc')
             .then(response => response.json());
       var variable_metadata_feat = variable_metadata.results;
     switch(table.tableInfo.id) {
         case 'awards':
-            let dataUrlPrefix = "https://educationdata.ssh.urban.org/csv/ipeds/colleges_ipeds_completions-2digcip_";
+            let dataUrlPrefix = "https://educationdata.urban.org/csv/ipeds/colleges_ipeds_completions-2digcip_";
             let dataUrlExtension = ".csv";
             var all_rows = [];
             for (let i = 0; i < yearArray.length; i++) {
@@ -178,7 +178,7 @@ myConnector.getData = async function(table, doneCallback){
             doneCallback();
             break;
         case 'institution':
-            let finalUrl = "https://educationdata.ssh.urban.org/csv/ipeds/colleges_ipeds_directory.csv";
+            let finalUrl = "https://educationdata.urban.org/csv/ipeds/colleges_ipeds_directory.csv";
             console.time("Getting institution data");
             data = savedCSVData || (await _retrieveCSVData({ finalUrl, method, token, encoding }));
             data = await _retrieveCSVData({ finalUrl, method, token, encoding });
@@ -413,7 +413,7 @@ async function _submitDataToTableau() {
     let yearValue = $("#choosen-years").val();
     // let yearValue = conData.yearValue;
     //creating the csv url
-    let dataUrlPrefix = "https://educationdata.ssh.urban.org/csv/ipeds/colleges_ipeds_completions-2digcip_";
+    let dataUrlPrefix = "https://educationdata.urban.org/csv/ipeds/colleges_ipeds_completions-2digcip_";
     // let dataUrlPrefix = dataUrl.slice(0, 77)
     let extension = ".csv";
     let yearinit = yearValue[0];
