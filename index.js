@@ -5,10 +5,9 @@ const serveStatic = require('serve-static');
 const express = require("express");
 const fetch = require("node-fetch");
 const iconv = require("iconv-lite");
-const cors = require("cors");
 const app = express();
-//Enable  CORS
-app.use(cors());
+
+
 
 // utilize the same pattern for exiting port and cache settings
 const serverPortNumber = process.env.SERVER_PORT || 8888;
@@ -30,10 +29,10 @@ const serve = serveStatic('./', {
   setHeaders: setCustomCacheControl,
 });
 */ // Calling Static with express method
-app.use(express.static('public'));
+app.use(express.static('./'));
 app.use(express.json());
 
-app.get('/', cors(), (req, res) => {
+app.get('/', (req, res) => {
   res.json({msg: 'This is CORS-enabled for all origins!'})
   res.sendFile(__dirname + "/index.html");
 });
