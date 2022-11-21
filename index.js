@@ -30,7 +30,7 @@ const serve = serveStatic('./', {
   setHeaders: setCustomCacheControl,
 });
 */ // Calling Static with express method
-app.use(express.static('.'));
+app.use(express.static('public'));
 app.use(express.json());
 
 app.get('/', cors(), (req, res) => {
