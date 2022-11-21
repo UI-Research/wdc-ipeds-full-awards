@@ -35,7 +35,7 @@ app.use(express.json());
 
 app.get('/', cors(), (req, res) => {
   res.json({msg: 'This is CORS-enabled for all origins!'})
-  res.sendFile(__dirname + "/index.html");
+  res.sendFile(__dirname + "/views/index.html");
 });
 app.listen(serverPortNumber, function () {
   console.log(`CORS-enabled web server listening on port ${serverPortNumber}`);
