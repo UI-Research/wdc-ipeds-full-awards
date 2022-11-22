@@ -32,23 +32,11 @@ app.use(express.static('./'));
 app.use(express.json());
 
 
-app.get('/', (req, res) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.json({msg: 'This is CORS-enabled for all origins!'})
-  const yearinit = req.query["yearinit"];
-  const url = `https://educationdata.urban.org/csv/ipeds/colleges_ipeds_completions-2digcip_${yearinit}.csv`;
-  request(url).pipe(res);
+app.get('/', (req, res) => {File(__dirname + "/index.html");
   res.sendFile(__dirname + "/index.html");
 });
 
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  next();
-});
-
-app.listen(serverPortNumber, function () {
-  console.log(`CORS-enabled web server listening on port ${serverPortNumber}`);
-});
+app.listen(serverPortNumber);
 
 app.post("/proxy/*", async (req, res) => {
   let url = req.url.split("/proxy/")[1];
