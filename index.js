@@ -1,7 +1,3 @@
-/* eslint-disable no-console */
-const http = require('http');
-const finalhandler = require('finalhandler');
-const serveStatic = require('serve-static');
 const express = require("express");
 const fetch = require("node-fetch");
 const iconv = require("iconv-lite");
