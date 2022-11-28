@@ -477,7 +477,7 @@ async function _retrieveCSVData({ finalUrl, method, token, encoding }) {
     } catch (error) {
       try {
         let options = {
-          method: "POST",
+          method: "GET",
           headers: {
             "Content-Type": "application/json"
           },
