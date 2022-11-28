@@ -12,13 +12,21 @@
     "url": "git+https://github.com/UI-Research/wdc-ipeds-full-awards.git"
   },
   "keywords": [
-    "\"node\"",
-    "\"express\"\""
+    "node",
+    "express"
   ],
   "author": "Urban Institute",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/UI-Research/wdc-ipeds-full-awards/issues"
   },
-  "homepage": "https://github.com/UI-Research/wdc-ipeds-full-awards#readme"
+  "homepage": "https://github.com/UI-Research/wdc-ipeds-full-awards#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "iconv-lite": "^0.6.3",
+    "node-fetch": "^2.6.1"
+  },
+  "engines": {
+    "node": "16.x"
+  }
 }
