@@ -1,7 +1,6 @@
 const express = require("express");
 const fetch = require("node-fetch");
 const iconv = require("iconv-lite");
-const cors = require("cors");
 const app = express();
 
 // utilize the same pattern for exiting port and cache settings
