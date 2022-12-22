@@ -1,8 +1,14 @@
+/* eslint-disable no-console */
+const http = require('http');
+const finalhandler = require('finalhandler');
+const serveStatic = require('serve-static');
 const express = require("express");
 const fetch = require("node-fetch");
 const iconv = require("iconv-lite");
-const cors = require("cors");
 const app = express();
+const cors = require("cors");
+//Enable  CORS
+app.use(cors());
 
 // utilize the same pattern for exiting port and cache settings
 const serverPortNumber = process.env.SERVER_PORT || 8888;
@@ -27,11 +33,9 @@ const serve = serveStatic('./', {
 app.use(express.static('./'));
 app.use(express.json());
 
-
-app.get('/', (req, res) => {File(__dirname + "/index.html");
+app.get('/', (req, res) => {
   res.sendFile(__dirname + "/index.html");
 });
-
 app.listen(serverPortNumber);
 
 app.post("/proxy/*", async (req, res) => {
