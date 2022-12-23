@@ -6,9 +6,9 @@ const express = require("express");
 const fetch = require("node-fetch");
 const iconv = require("iconv-lite");
 const app = express();
-const cors = require("cors");
+//const cors = require("cors");
 //Enable  CORS
-app.use(cors());
+//app.use(cors());
 
 // utilize the same pattern for exiting port and cache settings
 const serverPortNumber = process.env.SERVER_PORT || 8888;

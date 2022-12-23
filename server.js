@@ -11,7 +11,7 @@ const fetch = require("node-fetch");
 const iconv = require("iconv-lite");
 const app = express();
 
-app.use(express.static("wdc"));
+app.use(express.static("./"));
 app.use(express.json());
 
 app.get("/", (req, res) => {
@@ -47,6 +47,6 @@ app.post("/proxy/*", async (req, res) => {
   }
 });
 
-const listener = app.listen(process.env.PORT, () => {
+const listener = app.listen(process.env.PORT || 3000, () => {
   console.log("Your app is listening on port " + listener.address().port);
 });
