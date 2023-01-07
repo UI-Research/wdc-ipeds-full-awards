@@ -474,7 +474,7 @@ async function _retrieveCSVData({ finalUrl, method, token, encoding }) {
         result = decoder.decode(buffer);
       } else {
         result = await response.text();
-        console.log(`Testing 1st result:${result}`);
+        //console.log(`Testing 1st result:${result}`);
       }
     } catch (error) {
       try {
@@ -490,9 +490,9 @@ async function _retrieveCSVData({ finalUrl, method, token, encoding }) {
           })
         };
         const response = await fetch("/proxy/" + finalUrl, options);
-        console.log(`Testing 2nd request:${response}`);
+        //console.log(`Testing 2nd request:${response}`);
         result = await response.text();
-        console.log(`Testing 2nd result:${result}`);
+        //console.log(`Testing 2nd result:${result}`);
       } catch (error) {
         if (tableau.phase !== "interactive") {
           tableau.abortWithError(error);
