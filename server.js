@@ -22,9 +22,8 @@ app.get("/", (req, res) => {
 });
 
 app.post("/proxy/*", async (req, res) => {
-  //let url = req.url.split("/proxy/")[1];
-  console.log(req.url);
-  let url = "https://educationdata.urban.org/csv/ipeds/colleges_ipeds_completions-2digcip_1996.csv";
+  let url = req.url.split(/\/proxy\/https\:\//)[1];
+  url = "https://" + url;
   console.log(`url = ${url}`);
   let options = {
     method: req.body.method
