@@ -23,6 +23,7 @@ app.get("/", (req, res) => {
 
 app.post("/proxy/*", async (req, res) => {
   let url = req.url.split("/proxy/")[1];
+  console.log(`url = ${url}`);
   let options = {
     method: req.body.method
   };
