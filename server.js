@@ -43,9 +43,11 @@ app.post("/proxy/*", async (req, res) => {
     } else {
       data = await response.text();
     }
+    console.log(`error = ${response.statusText}`);
     response.ok ? res.send(data) : res.send({ error: response.statusText });
     return;
   } catch (error) {
+    console.log(`catch error ${error.message}`);
     res.send({ error: error.message });
     return;
   }
