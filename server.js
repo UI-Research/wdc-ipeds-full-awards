@@ -14,6 +14,9 @@ const app = express();
 app.use(express.static("./"));
 app.use(express.json());
 
+app.set('trust proxy', true);
+app.set('trust proxy', 'loopback');
+
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/index.html");
 });
