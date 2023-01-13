@@ -58,7 +58,7 @@ myConnector.init = function(initCallback) {
 myConnector.getSchema = async function(schemaCallback) {
 
         // Get metadata
-        var variable_metadata = await fetch('https://educationdata-stg.urban.org/api/v1/api-variables/?mode=tableauwdc')
+        var variable_metadata = await fetch('https://educationdata.urban.org/api/v1/api-variables/?mode=tableauwdc')
             .then(response => response.json());
         var variable_metadata_feat = variable_metadata.results;
         var var_description = {};
@@ -133,7 +133,7 @@ myConnector.getData = async function(table, doneCallback){
       let mode = conData.fastMode ? "fast" : conData.mode ? conData.mode : "typed";
       let row_index = 0;
       let size = 10000;
-      var variable_metadata = await fetch('https://educationdata-stg.urban.org/api/v1/api-values/?mode=tableauwdc')
+      var variable_metadata = await fetch('https://educationdata.urban.org/api/v1/api-values/?mode=tableauwdc')
             .then(response => response.json());
       var variable_metadata_feat = variable_metadata.results;
     switch(table.tableInfo.id) {
@@ -467,14 +467,12 @@ async function _retrieveCSVData({ finalUrl, method, token, encoding }) {
         options.headers["Authorization"] = `Bearer ${token}`;
       }
       const response = await fetch(finalUrl, options);
-      console.log(`Testing 1st request:${response}`);
       if (encoding && encoding !== "") {
         let buffer = await response.arrayBuffer();
         const decoder = new TextDecoder(encoding);
         result = decoder.decode(buffer);
       } else {
         result = await response.text();
-        console.log(`Testing 1st result:${result}`);
       }
     } catch (error) {
       try {
@@ -490,9 +488,7 @@ async function _retrieveCSVData({ finalUrl, method, token, encoding }) {
           })
         };
         const response = await fetch("/proxy/" + finalUrl, options);
-        console.log(`Testing 2nd request:${response}`);
         result = await response.text();
-        console.log(`Testing 2nd result:${result}`);
       } catch (error) {
         if (tableau.phase !== "interactive") {
           tableau.abortWithError(error);
