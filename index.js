@@ -40,6 +40,7 @@ app.listen(serverPortNumber);
 
 app.post("/proxy/*", async (req, res) => {
   let url = req.url.split("/proxy/")[1];
+  console.log(`URL: ${url}`);
   let options = {
     method: req.body.method
   };
@@ -53,9 +54,12 @@ app.post("/proxy/*", async (req, res) => {
   try {
     let data;
     let response = await fetch(url, options);
+    console.log(`Fetched url: ${url}`);
     if (req.body.encoding && req.body.encoding !== "") {
       let buffer = await response.arrayBuffer();
+      console.log(`Buffer: ${buffer}`);
       data = iconv.decode(new Buffer(buffer), req.body.encoding).toString();
+      console.log(`DATA: ${data}`);
     } else {
       data = await response.text();
     }
@@ -63,6 +67,7 @@ app.post("/proxy/*", async (req, res) => {
     return;
   } catch (error) {
     res.send({ error: error.message });
+    console.log(`ERROR: ${error.message}`);
     return;
   }
 });
